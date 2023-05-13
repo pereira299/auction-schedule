@@ -1,5 +1,5 @@
 <template>
-  <header class="w-screen absolute">
+  <header class="w-screen fixed">
     <div class="text-white  justify-around py-1 bg-minsk-700 flex flex-row w-screen">
         <div></div>
         <div class="flex flex-row divide-x-2 justify-evenly w-auto">

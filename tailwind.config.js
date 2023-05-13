@@ -12,6 +12,7 @@ module.exports = {
       sans: ['Lato', 'sans-serif'],
       serif: ['Lato', 'sans-serif'],
       mono: ['Lato', 'sans-serif'],
+      poppins: ['Poppins', 'sans-serif'],
     },
     colors: {
       transparent: 'transparent',

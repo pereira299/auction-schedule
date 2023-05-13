@@ -1,7 +1,9 @@
 <template>
     <div>
         <StyledHeader />
-        <slot />
+        <main class="min-h-screen">
+            <slot />
+        </main>
         <StyledFooter />
     </div>
 </template>
