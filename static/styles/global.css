@@ -14,3 +14,37 @@ body {
 .text-poppins {
     font-family: 'Poppins', sans-serif;
 }
+
+.header-icon {
+    left: 40vw;
+}
+
+@media (min-width: 1024px) {
+    .header-icon {
+        left: -1vw
+    }
+}
+
+@media (min-width: 1100px) {
+    .header-icon {
+        left: 1vw
+    }
+}
+
+@media (min-width: 1280px) {
+    .header-icon {
+        left: 5vw/* 64px */;
+    }
+}
+
+@media (min-width: 1536px) {
+    .header-icon {
+        left: 8rem/* 128px */;
+    }
+}
+
+
+
+
+
+
