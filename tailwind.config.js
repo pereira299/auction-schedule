@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   content: [
     "./components/**/*.{js,vue,ts}",
@@ -19,6 +21,24 @@ module.exports = {
       current: 'currentColor',
       black: '#000',
       white: '#fff',
+      indigo: colors.indigo,
+      gray: colors.neutral,
+      red: colors.red,
+      yellow: colors.amber,
+      blue: colors.blue,
+      green: colors.green,
+      orange: colors.orange,
+      teal: colors.teal,
+      pink: colors.pink,
+      purple: colors.purple,
+      lime: colors.lime,
+      cyan: colors.cyan,
+      emerald: colors.emerald,
+      fuchsia: colors.fuchsia,
+      rose: colors.rose,
+      violet: colors.violet,
+      amber: colors.amber,
+      steal: colors.steal,
       sun: {
         50: '#FFEFC9',
         100: '#FEE9B5',

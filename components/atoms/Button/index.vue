@@ -1,9 +1,7 @@
 <template>
   <button 
     class="bg-sun-500 text-minsk-500 px-4 py-2"
-    :class="{
-      'rounded-md': rounded,
-    }"
+    :class="btnClass + (rounded ? ' rounded-md' : '')"
   >
     {{ text }}
   </button>
@@ -17,9 +15,12 @@ export default {
             type: Boolean,
             required: false,
             default: false
-        }
+        },
+        btnClass: {
+            type: String,
+            required: false,
+            default: ""
+        },
     }
 }
 </script>
-
-<style></style>
