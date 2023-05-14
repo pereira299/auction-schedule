@@ -1,5 +1,5 @@
 <template>
-  <header class="w-screen fixed">
+  <header class="w-screen fixed z-50">
     <div
       class="text-white hidden justify-around py-1 bg-minsk-700 lg:flex flex-row w-screen"
     >
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import StyledButton from '@/components/atoms/Buttons'
+import StyledButton from '@/components/atoms/Button'
 
 export default {
   name: 'StyledHeader',
