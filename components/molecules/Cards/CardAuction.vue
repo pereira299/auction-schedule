@@ -39,7 +39,7 @@
   </article>
 </template>
 
-<script lang="ts">
+<script>
 import CardDate from '@/components/molecules/Cards/CardDate.vue'
 import StyledButton from '@/components/atoms/Button/index.vue'
 
@@ -61,7 +61,7 @@ export default {
     date: {
       type: String,
       required: true,
-      validator: (value: string) => {
+      validator: (value) => {
         const regex = /^\d{4}-\d{2}-\d{2}$/
         // stay only with the date part
         const date = value.split('T')[0]

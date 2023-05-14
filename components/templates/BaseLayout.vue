@@ -1,7 +1,7 @@
 <template>
   <div>
     <StyledHeader />
-    <main class="min-h-screen pt-28">
+    <main class="min-h-screen pt-28" :class="mainClass">
       <slot />
     </main>
     <StyledFooter />
@@ -17,6 +17,13 @@ export default {
   components: {
     StyledHeader,
     StyledFooter,
+  },
+  props: {
+    mainClass: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
   head() {
     return {
