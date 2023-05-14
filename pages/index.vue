@@ -4,7 +4,7 @@
     <section class="p-10">
       <SectionTitle title="Leilões ao vivo" />
       <ul class="flex flex-row flex-wrap justify-between">
-        <li v-for="live in lives" :key="live.id" class="w-6/12">
+        <li v-for="live in lives" :key="live.id" class="w-5/12">
           <CardAuction
             :title="live.title"
             :city="live.city"
@@ -12,7 +12,7 @@
             :date="live.date"
             :image="live.image"
             btn-text="Assista ao vivo"
-            btn-class="uppercase sm:bg-red-600 hover:bg-red-500 active:bg-red-700 text-white"
+            btn-class="uppercase font-bold sm:bg-red-600 hover:bg-red-500 active:bg-red-700 text-white"
           />
         </li>
       </ul>
@@ -27,8 +27,8 @@
             :row="false"
             :date="item.date"
             :image="item.image"
-            btn-text="Assista ao vivo"
-            btn-class="uppercase sm:bg-sun-500 hover:bg-sun-400 active:bg-sun-600 text-minsk-500"
+            btn-text="Detalhes"
+            btn-class="uppercase font-bold sm:bg-sun-500 hover:bg-sun-400 active:bg-sun-600 text-minsk-500"
           />
         </li>
       </ul>
@@ -93,13 +93,6 @@ export default {
         },
         {
           id: 3,
-          title: "Leilão de gado de corte",
-          city: "São Paulo",
-          date: "2021-10-10T10:00:00",
-          image: "images/leilao.png",
-        },
-        {
-          id: 4,
           title: "Leilão de gado de corte",
           city: "São Paulo",
           date: "2021-10-10T10:00:00",

@@ -12,6 +12,11 @@ export default {
     name: "StyledButton",
     props: {
         text: {
+            type: String,
+            required: false,
+            default: "Button"
+        },
+        rounded: {
             type: Boolean,
             required: false,
             default: false
