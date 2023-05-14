@@ -26,6 +26,11 @@ export default {
             required: false,
             default: ""
         },
+        rounded: {
+            type: Boolean,
+            required: false,
+            default: false
+        }
     }
 }
 </script>
