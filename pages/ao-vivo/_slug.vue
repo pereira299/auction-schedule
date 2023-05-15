@@ -1,6 +1,8 @@
 <template>
   <BaseLayout class="bg-gray-200">
-    <figure class="w-screen">
+    <iframe v-if="youtubeLink" width="100%" height="350" :src="youtubeLink">
+    </iframe>
+    <figure class="w-screen" v-else>
       <img
         src="/images/banner-2.png"
         alt="campo com animais"
@@ -16,8 +18,17 @@
         </address>
       </header>
       <div class="flex-col flex">
-        <StyledButton text="Catalogo" class="mb-3" :rounded="true" />
-        <StyledButton text="Regulamento" :rounded="true" />
+        <StyledButton
+          text="Catalogo"
+          class="mb-3"
+          :rounded="true"
+          @click="openCatalog = true"
+        />
+        <StyledButton
+          text="Regulamento"
+          :rounded="true"
+          @click="openRegulation = true"
+        />
       </div>
     </section>
     <section class="bg-white shadow rounded">
@@ -69,6 +80,22 @@
         </li>
       </ul>
     </section>
+    <ModalDialog
+      title="Regulamento"
+      :has-btn="false"
+      :open="openRegulation"
+      @close="hiddenRegulation"
+    >
+      <p class="m-auto text-center">Regulamento não registrado no sistema</p>
+    </ModalDialog>
+    <ModalDialog
+      title="Catalogo"
+      :has-btn="false"
+      :open="openCatalog"
+      @close="hiddenCatalog"
+    >
+      <p class="m-auto text-center">Catalogo não registrado no sistema</p>
+    </ModalDialog>
   </BaseLayout>
 </template>
 
@@ -77,55 +104,69 @@ import BaseLayout from '~/components/templates/BaseLayout.vue'
 import StyledButton from '~/components/atoms/Button/index.vue'
 import SectionTitle from '~/components/atoms/SectionTitle/index.vue'
 import CardAuction from '~/components/molecules/Cards/CardAuction.vue'
+import ModalDialog from '~/components/molecules/Dialog/modalDialog.vue'
+import api from '~/services/api'
 
 export default {
-  components: { BaseLayout, StyledButton, SectionTitle, CardAuction },
+  components: {
+    BaseLayout,
+    StyledButton,
+    SectionTitle,
+    CardAuction,
+    ModalDialog,
+  },
+  async asyncData({ params }) {
+    const { slug } = params
+    const id = slug.split('-').slice(-1)[0]
+
+    const { data } = await api.get('/lots/' + id)
+    const leilao = await api.get('auctions')
+
+    const auctions = leilao.data.data.slice(0, 3).map((auction) => {
+      const slug = auction.name.toLowerCase().replace(/ /g, '-')
+
+      return {
+        id: auction.id,
+        title: auction.name,
+        city: auction.city,
+        date: auction.date + 'T' + auction.time,
+        image: 'https://bis365.com.br/bid365/storage/' + auction.image,
+        link: `/leiloes/${slug}-${auction.id}`,
+      }
+    })
+
+    const zipCode = data.data.trading_floor.zip_code.replace(/-/g, '')
+    // get full address from zip code
+    const address = await api.get(`https://viacep.com.br/ws/${zipCode}/json/`)
+
+    const addressData = address.data
+
+    const keys = Object.keys(data.data.trading_floor).filter(
+      (key) => key.includes('desk') && data.data.trading_floor[key]
+    )
+    const phones = keys.map((key) => {
+      return {
+        number: data.data.trading_floor[key],
+        whatsapp: false,
+      }
+    })
+
+    const ytId = data.data.video.split('v=')[1]
+    const link = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1'
+    return {
+      name: data.data.name,
+      city: addressData.localidade + ' - ' + addressData.uf,
+      phones,
+      youtubeLink: data.data.video ? link : null,
+      agenda: auctions,
+    }
+  },
   data() {
     return {
+      openCatalog: false,
+      openRegulation: false,
       name: 'Leilão de gado de corte',
       city: 'São Paulo',
-      phones: [
-        {
-          number: '(11) 99999-9999',
-          whatsapp: true,
-        },
-        {
-          number: '(11) 99999-9999',
-          whatsapp: false,
-        },
-        {
-          number: '(11) 99999-9999',
-          whatsapp: true,
-        },
-        {
-          number: '(11) 99999-9999',
-          whatsapp: true,
-        },
-        {
-          number: '(11) 99999-9999',
-          whatsapp: false,
-        },
-        {
-          number: '(11) 99999-9999',
-          whatsapp: true,
-        },
-        {
-          number: '(11) 99999-9999',
-          whatsapp: true,
-        },
-        {
-          number: '(11) 99999-9999',
-          whatsapp: true,
-        },
-        {
-          number: '(11) 99999-9999',
-          whatsapp: false,
-        },
-        {
-          number: '(11) 99999-9999',
-          whatsapp: true,
-        },
-      ],
       agenda: [
         {
           id: 1,
@@ -151,6 +192,14 @@ export default {
       ],
     }
   },
+  methods: {
+    hiddenRegulation() {
+      this.openRegulation = false
+    },
+    hiddenCatalog() {
+      this.openCatalog = false
+    },
+  },
 }
 </script>
 
@@ -161,3 +210,4 @@ section {
   color: black;
 }
 </style>
+

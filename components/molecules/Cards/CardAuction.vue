@@ -1,6 +1,6 @@
 <template>
   <article
-    class="p-5 px-3 flex shadow-lg hover:shadow-2xl transition-all w-fit duration-300 bg-gray-100 rounded justify-around"
+    class="p-5 px-3 flex shadow-lg hover:shadow-2xl transition-all w-fit h-max duration-300 bg-gray-100 rounded justify-around"
     :class="{
       'flex-col lg:flex-row': row,
       'flex-col': !row,
