@@ -46,7 +46,7 @@
       </div>
       <nav class="w-8/12 lg:w-6/12 hidden lg:block">
         <ul class="flex flex-row justify-around my-3">
-          <li v-for="item in navs" :key="item.id" class="text-white">
+          <li v-for="item in navs" :key="item.id" class="text-white hover:text-sun-500 cursor-pointer">
             <a :href="item.link">
               {{ item.name }}
             </a>

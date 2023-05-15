@@ -22,7 +22,7 @@
     >
       <div class="flex flex-row justify-between mb-3">
         <CardDate :date="date" />
-        <div class="w-auto">
+        <div class="w-auto ml-2">
           <h3 class="font-bold text-xl mb-3">{{ title }}</h3>
           <address class="flex flex-row">
             <i class="fa-solid fa-location-dot text-md mt-1 mr-1"></i>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-minsk-500 rounded-lg divide-y w-20 divide-white text-center py-2">
+  <div class="bg-minsk-500 rounded-lg divide-y w-20 h-fit divide-white text-center py-2">
     <p class="uppercase text-white font-bold">
       <time :datetime="date" class="pb-1">
         <b class="text-4xl font-semibold">{{ day }}</b>

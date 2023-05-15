@@ -1,5 +1,5 @@
 <template>
-  <BaseLayout>
+  <BaseLayout class="bg-gray-200">
     <StyledCarroussel :images="images" />
     <section class="p-10">
       <SectionTitle title="Leilões ao vivo" />
@@ -20,7 +20,14 @@
     <section class="p-10">
       <SectionTitle title="agenda de Leilões" />
       <ul class="flex flex-row flex-wrap justify-between">
-        <li v-for="item in agenda" :key="item.id" class="w-3/12 ml-3">
+        <li
+          v-for="item in agenda"
+          :key="item.id"
+          class="w-3/12"
+          :class="{
+            'ml-3': i > 0,
+          }"
+        >
           <CardAuction
             :title="item.title"
             :city="item.city"
@@ -38,12 +45,12 @@
 </template>
 
 <script lang="ts">
-import "static/styles/global.css"
-import BaseLayout from "@/components/templates/BaseLayout.vue"
-import StyledCarroussel from "@/components/organisms/Carroussel/index.vue"
-import SectionTitle from "@/components/atoms/SectionTitle/index.vue"
-import CardAuction from "@/components/molecules/Cards/CardAuction.vue"
-import StyledButton from "@/components/atoms/Button/index.vue"
+import 'static/styles/global.css'
+import BaseLayout from '@/components/templates/BaseLayout.vue'
+import StyledCarroussel from '@/components/organisms/Carroussel/index.vue'
+import SectionTitle from '@/components/atoms/SectionTitle/index.vue'
+import CardAuction from '@/components/molecules/Cards/CardAuction.vue'
+import StyledButton from '@/components/atoms/Button/index.vue'
 
 export default {
   name: 'IndexPage',
@@ -56,50 +63,47 @@ export default {
   },
   data() {
     return {
-      images: [
-        "images/banner-1.png",
-        "images/banner-2.png",
-      ], 
+      images: ['images/banner-1.png', 'images/banner-2.png'],
       lives: [
         {
           id: 1,
-          title: "Leilão de gado de corte",
-          city: "São Paulo",
-          date: "2021-10-10T10:00:00",
-          image: "images/leilao.png",
+          title: 'Leilão de gado de corte',
+          city: 'São Paulo',
+          date: '2021-10-10T10:00:00',
+          image: 'images/leilao.png',
         },
         {
           id: 2,
-          title: "Leilão de gado de corte",
-          city: "São Paulo",
-          date: "2021-10-10T10:00:00",
-          image: "images/leilao.png",
-        }
+          title: 'Leilão de gado de corte',
+          city: 'São Paulo',
+          date: '2021-10-10T10:00:00',
+          image: 'images/leilao.png',
+        },
       ],
       agenda: [
         {
           id: 1,
-          title: "Leilão de gado de corte",
-          city: "São Paulo",
-          date: "2021-10-10T10:00:00",
-          image: "images/leilao.png",
+          title: 'Leilão de gado de corte',
+          city: 'São Paulo',
+          date: '2021-10-10T10:00:00',
+          image: 'images/leilao.png',
         },
         {
           id: 2,
-          title: "Leilão de gado de corte",
-          city: "São Paulo",
-          date: "2021-10-10T10:00:00",
-          image: "images/leilao.png",
+          title: 'Leilão de gado de corte',
+          city: 'São Paulo',
+          date: '2021-10-10T10:00:00',
+          image: 'images/leilao.png',
         },
         {
           id: 3,
-          title: "Leilão de gado de corte",
-          city: "São Paulo",
-          date: "2021-10-10T10:00:00",
-          image: "images/leilao.png",
-        }
-      ]
+          title: 'Leilão de gado de corte',
+          city: 'São Paulo',
+          date: '2021-10-10T10:00:00',
+          image: 'images/leilao.png',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
