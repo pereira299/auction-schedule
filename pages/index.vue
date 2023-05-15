@@ -118,7 +118,6 @@ export default {
     })
 
     for (const item of live) {
-      console.log(item);
       const zipCode = item.zip_code.replace(/-/g, '');
       // get full address from zip code
       const address = await api.get(`https://viacep.com.br/ws/${zipCode}/json/`);

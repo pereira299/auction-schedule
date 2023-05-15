@@ -1,6 +1,6 @@
 <template>
   <div>
-    <StyledHeader @toggle-menu="changeDrawer"/>
+    <StyledHeader @toggleMenu="changeDrawer" />
     <main class="min-h-screen pt-28" :class="mainClass">
       <slot />
     </main>
@@ -48,6 +48,11 @@ export default {
           crossorigin: 'anonymous',
         },
       ],
+      title: 'Camargo Agronegócios',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+      ]
     }
   },
   methods: {

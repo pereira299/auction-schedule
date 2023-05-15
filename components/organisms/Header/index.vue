@@ -62,9 +62,9 @@
           </li>
         </ul>
       </nav>
-      <button class="bg-sun-500 text-minsk-500 px-4 py-2 hidden lg:block">
-        Meu cadastro
-      </button>
+      <a class="bg-sun-500 text-minsk-500 px-4 py-2 hidden lg:block" href="/cadastro">
+        Cadastre-se
+      </a>
       <div class="block lg:hidden"></div>
     </div>
   </header>
@@ -89,13 +89,8 @@ export default {
         },
         {
           id: 3,
-          name: 'Pregão online',
-          link: '/pregao',
-        },
-        {
-          id: 4,
-          name: 'Resultados',
-          link: '/resultados',
+          name: 'Login',
+          link: '/login',
         },
       ],
     }
@@ -103,9 +98,9 @@ export default {
   emits: ['toggleMenu'],
   methods: {
     toggleMenu() {
+      
       this.showMenu = !this.showMenu
       this.$emit('toggleMenu', this.showMenu)
-      this.$forceUpdate()
     },
   },
 }

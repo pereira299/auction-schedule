@@ -1,7 +1,8 @@
 <template>
   <button
     v-if="!link || link === '#' || link === ''"
-    class="bg-sun-500 text-minsk-500 px-4 py-2"
+    class="bg-sun-500 disabled:bg-gray-300 disabled:text-gray-400 text-minsk-500 px-4 py-2"
+    :disabled="disabled"
     :class="btnClass + (rounded ? ' rounded-md' : '')"
     @click="$emit('click')"
   >
@@ -40,6 +41,11 @@ export default {
       type: String,
       required: false,
       default: '#',
+    },
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
 }

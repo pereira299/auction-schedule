@@ -3,6 +3,7 @@
     v-if="open"
 
     class="w-screen h-screen z-50 backdrop-blur-lg bg-gray-600/60 fixed top-0 left-0 flex flex-row justify-center items-center"
+    :class="className"
     @click="close"
   >
     <slot class="h-screen p-10"/>
@@ -17,7 +18,12 @@ export default {
       type: Boolean,
       required: true,
       default: false,
-    }
+    },
+    className: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
   emits: ['close'],
   methods: {
