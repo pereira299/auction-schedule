@@ -109,7 +109,7 @@ export default {
     ImageDialog,
     ModalDialog,
   },
-  async asyncData({ params }) {
+  async fetch({ params }) {
     const { slug } = params
     const id = slug.split('-').slice(-1)[0]
 

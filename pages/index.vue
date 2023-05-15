@@ -64,7 +64,7 @@ export default {
     CardAuction,
     StyledButton,
   },
-  async asyncData() {
+  async fetch() {
     const { data } = await api.get('home-page')
 
     const banners = data.data.banners.map((banner: { image_url: String }) => {

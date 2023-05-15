@@ -28,7 +28,7 @@ import api from '~/services/api'
 
 export default {
   components: { BaseLayout, CardAuction, SectionTitle },
-  async asyncData() {
+  async fetch() {
     const { data } = await api.get('auctions')
 
     const auctions = data.data.map(
