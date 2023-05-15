@@ -1,22 +1,25 @@
 <template>
   <div>
-    <StyledHeader />
+    <StyledHeader @toggle-menu="changeDrawer"/>
     <main class="min-h-screen pt-28" :class="mainClass">
       <slot />
     </main>
     <StyledFooter />
+    <StyledDrawer :open="drawer" @close="changeDrawer" />
   </div>
 </template>
 
 <script>
 import StyledHeader from '@/components/organisms/Header'
 import StyledFooter from '@/components/organisms/Footer'
+import StyledDrawer from '@/components/organisms/Drawer'
 
 export default {
   name: 'BaseLayout',
   components: {
     StyledHeader,
     StyledFooter,
+    StyledDrawer,
   },
   props: {
     mainClass: {
@@ -24,6 +27,11 @@ export default {
       required: false,
       default: '',
     },
+  },
+  data() {
+    return {
+      drawer: false,
+    }
   },
   head() {
     return {
@@ -41,6 +49,11 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    changeDrawer() {
+      this.drawer = !this.drawer
+    },
   },
 }
 </script>

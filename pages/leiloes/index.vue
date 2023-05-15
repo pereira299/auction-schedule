@@ -10,6 +10,7 @@
             :row="false"
             :date="item.date"
             :image="item.image"
+            :link="item.link"
             btn-text="Detalhes"
             btn-class="uppercase font-bold sm:bg-sun-500 hover:bg-sun-400 active:bg-sun-600 text-minsk-500"
           />
@@ -23,69 +24,29 @@
 import CardAuction from '~/components/molecules/Cards/CardAuction.vue'
 import BaseLayout from '~/components/templates/BaseLayout.vue'
 import SectionTitle from '~/components/atoms/SectionTitle/index.vue'
+import api from '~/services/api'
 
 export default {
   components: { BaseLayout, CardAuction, SectionTitle },
-  data() {
+  async asyncData() {
+    const { data } = await api.get('auctions')
+
+    const auctions = data.data.map(
+      (auction) => {
+        const slug = auction.name.toLowerCase().replace(/ /g, '-')
+
+        return {
+          id: auction.id,
+          title: auction.name,
+          city: auction.city,
+          date: auction.date + 'T' + auction.time,
+          image: 'https://bis365.com.br/bid365/storage/' + auction.image,
+          link: `/leiloes/${slug}-${auction.id}`,
+        }
+      }
+    )
     return {
-      agenda: [
-        {
-          id: 1,
-          title: 'Leilão de gado de corte',
-          city: 'São Paulo',
-          date: '2021-10-10T10:00:00',
-          image: 'images/leilao.png',
-        },
-        {
-          id: 2,
-          title: 'Leilão de gado de corte',
-          city: 'São Paulo',
-          date: '2021-10-10T10:00:00',
-          image: 'images/leilao.png',
-        },
-        {
-          id: 3,
-          title: 'Leilão de gado de corte',
-          city: 'São Paulo',
-          date: '2021-10-10T10:00:00',
-          image: 'images/leilao.png',
-        },
-        {
-          id: 4,
-          title: 'Leilão de gado de corte',
-          city: 'São Paulo',
-          date: '2021-10-10T10:00:00',
-          image: 'images/leilao.png',
-        },
-        {
-          id: 5,
-          title: 'Leilão de gado de corte',
-          city: 'São Paulo',
-          date: '2021-10-10T10:00:00',
-          image: 'images/leilao.png',
-        },
-        {
-          id: 6,
-          title: 'Leilão de gado de corte',
-          city: 'São Paulo',
-          date: '2021-10-10T10:00:00',
-          image: 'images/leilao.png',
-        },
-        {
-          id: 7,
-          title: 'Leilão de gado de corte',
-          city: 'São Paulo',
-          date: '2021-10-10T10:00:00',
-          image: 'images/leilao.png',
-        },
-        {
-          id: 8,
-          title: 'Leilão de gado de corte',
-          city: 'São Paulo',
-          date: '2021-10-10T10:00:00',
-          image: 'images/leilao.png',
-        },
-      ],
+      agenda: auctions,
     }
   },
 }

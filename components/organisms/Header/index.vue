@@ -29,7 +29,12 @@
       </div>
     </div>
 
-    <div class="bg-minsk-500 w-screen py-4 flex flex-row max-lg:justify-center">
+    <div
+      class="bg-minsk-500 w-screen py-4 flex flex-row max-lg:justify-between"
+    >
+      <div class="block lg:hidden p-5" @click="toggleMenu">
+        <i  class="fa-solid fa-bars text-5xl text-white"></i>
+      </div>
       <div class="w-2/12 lg:w-4/12 flex flex-row">
         <div class="w-5/12">
           <div
@@ -46,28 +51,31 @@
       </div>
       <nav class="w-8/12 lg:w-6/12 hidden lg:block">
         <ul class="flex flex-row justify-around my-3">
-          <li v-for="item in navs" :key="item.id" class="text-white hover:text-sun-500 cursor-pointer">
+          <li
+            v-for="item in navs"
+            :key="item.id"
+            class="text-white hover:text-sun-500 cursor-pointer"
+          >
             <a :href="item.link">
               {{ item.name }}
             </a>
           </li>
         </ul>
       </nav>
-      <StyledButton text="Meu cadastro" class="hidden lg:block" />
+      <button class="bg-sun-500 text-minsk-500 px-4 py-2 hidden lg:block">
+        Meu cadastro
+      </button>
+      <div class="block lg:hidden"></div>
     </div>
   </header>
 </template>
 
 <script>
-import StyledButton from '@/components/atoms/Button'
-
 export default {
   name: 'StyledHeader',
-  components: {
-    StyledButton,
-  },
   data() {
     return {
+      showMenu: false,
       navs: [
         {
           id: 1,
@@ -91,6 +99,14 @@ export default {
         },
       ],
     }
+  },
+  emits: ['toggleMenu'],
+  methods: {
+    toggleMenu() {
+      this.showMenu = !this.showMenu
+      this.$emit('toggleMenu', this.showMenu)
+      this.$forceUpdate()
+    },
   },
 }
 </script>

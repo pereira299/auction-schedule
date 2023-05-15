@@ -1,39 +1,39 @@
 <template>
   <article
-    class="p-5 px-3 flex shadow-lg hover:shadow-2xl transition-all max-w-fit duration-300 bg-gray-100 rounded justify-around"
+    class="p-5 px-3 flex shadow-lg hover:shadow-2xl transition-all w-fit duration-300 bg-gray-100 rounded justify-around"
     :class="{
-      'flex-row': row,
+      'flex-col lg:flex-row': row,
       'flex-col': !row,
     }"
   >
     <figure
       :class="{
-        'w-4/12': row,
+        'w-full lg:w-4/12': row,
         'w-full mb-3': !row,
       }"
     >
       <img
         :src="image"
         alt="imagem do leilão"
-        :class="!row ? 'h-40 mx-auto' : ''"
+        :class="!row ? 'h-40 mx-auto' : 'h-40 mx-auto'"
       />
     </figure>
     <div
       :class="{
-        'w-7/12': row,
+        'w-full lg:w-7/12': row,
         'w-full': !row,
       }"
     >
-      <div class="flex flex-row justify-between mb-3">
-        <CardDate :date="date" />
+      <div class="flex flex-col lg:flex-row justify-between mb-3">
+        <CardDate :date="date" :date-class="row ? '' : 'lg:px-4'"/>
         <div class="w-auto ml-2">
           <h3 class="font-bold text-xl mb-3">{{ title }}</h3>
           <address class="flex flex-row">
-            <i class="fa-solid fa-location-dot text-md mt-1 mr-1"></i>
+            <i class="fa-solid fa-location-dot hidden lg:block text-md mt-1 mr-1"></i>
             <p>{{ city }}</p>
           </address>
           <time class="flex flex-row">
-            <i class="fa-regular fa-clock text-md mt-1 mr-1"></i>
+            <i class="fa-regular fa-clock hidden lg:block text-md mt-1 mr-1"></i>
             <p>{{ time }}</p>
           </time>
         </div>
@@ -42,7 +42,7 @@
         :text="btnText"
         :rounded="true"
         :link="link"
-        :class="'w-full' + btnClass"
+        :class="'w-full ' + btnClass"
       />
     </div>
   </article>

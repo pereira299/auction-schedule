@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-minsk-500 rounded-lg divide-y w-20 h-fit divide-white text-center py-2">
+  <div class="bg-minsk-500 rounded-lg divide-y w-full max-lg:px-2  max-lg:my-2 lg:w-20 h-fit divide-white text-center py-2" :class="dateClass">
     <p class="uppercase text-white font-bold">
       <time :datetime="date" class="pb-1">
-        <b class="text-4xl font-semibold">{{ day }}</b>
-        <br />
+        <b class="lg:text-4xl font-semibold">{{ day }}</b>
+        <br class="hidden lg:block"/>
         {{ month }}
       </time>
     </p>
@@ -27,6 +27,11 @@ export default {
         return regex.test(date) && date.length === 10
       },
     },
+    dateClass: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
   computed: {
     dateObj() {
@@ -45,7 +50,7 @@ export default {
     weekday() {
       return Intl.DateTimeFormat('pt-BR', {
         weekday: 'long',
-      }).format(this.dateObj)
+      }).format(this.dateObj).replace('-feira', '')
     },
   },
 }

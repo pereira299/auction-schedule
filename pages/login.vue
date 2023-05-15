@@ -16,6 +16,7 @@
           text="Quero cadastrar"
           :rounded="true"
           class="w-6/12 uppercase mx-auto mt-5 font-bold"
+          link="/cadastro"
         />
       </article>
       <article class="bg-white p-5 w-6/12 rounded-r-lg">

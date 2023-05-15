@@ -1,6 +1,6 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
+  ssr: true,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -36,6 +36,11 @@ export default {
     '@nuxtjs/tailwindcss',
   ],
 
+  env: {
+    "BASE_URL": "https://bis365.com.br/bid365/api/v1/",
+    "TOKEN_API": "23a20977-9368-4f13-a008-d556163fa8df"
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
@@ -45,7 +50,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'https://bis365.com.br/bid365/api/v1/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
