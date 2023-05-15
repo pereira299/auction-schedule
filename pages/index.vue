@@ -11,6 +11,7 @@
             :row="true"
             :date="live.date"
             :image="live.image"
+            :link="live.link"
             btn-text="Assista ao vivo"
             btn-class="uppercase font-bold sm:bg-red-600 hover:bg-red-500 active:bg-red-700 text-white"
           />
@@ -34,6 +35,7 @@
             :row="false"
             :date="item.date"
             :image="item.image"
+            :link="item.link"
             btn-text="Detalhes"
             btn-class="uppercase font-bold sm:bg-sun-500 hover:bg-sun-400 active:bg-sun-600 text-minsk-500"
           />
@@ -71,6 +73,7 @@ export default {
           city: 'São Paulo',
           date: '2021-10-10T10:00:00',
           image: 'images/leilao.png',
+          link: '/ao-vivo/leilao-de-gado-de-corte',
         },
         {
           id: 2,
@@ -78,6 +81,7 @@ export default {
           city: 'São Paulo',
           date: '2021-10-10T10:00:00',
           image: 'images/leilao.png',
+          link: '/ao-vivo/leilao-de-gado-de-corte',
         },
       ],
       agenda: [
@@ -87,6 +91,7 @@ export default {
           city: 'São Paulo',
           date: '2021-10-10T10:00:00',
           image: 'images/leilao.png',
+          link: '/leiloes/leilao-de-gado-de-corte',
         },
         {
           id: 2,
@@ -94,6 +99,7 @@ export default {
           city: 'São Paulo',
           date: '2021-10-10T10:00:00',
           image: 'images/leilao.png',
+          link: '/leiloes/leilao-de-gado-de-corte',
         },
         {
           id: 3,
@@ -101,6 +107,7 @@ export default {
           city: 'São Paulo',
           date: '2021-10-10T10:00:00',
           image: 'images/leilao.png',
+          link: '/leiloes/leilao-de-gado-de-corte',
         },
       ],
     }

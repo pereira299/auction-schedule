@@ -12,13 +12,17 @@
         'w-full mb-3': !row,
       }"
     >
-      <img :src="image" alt="imagem do leilão" :class="!row ? 'h-40 mx-auto' : ''" />
+      <img
+        :src="image"
+        alt="imagem do leilão"
+        :class="!row ? 'h-40 mx-auto' : ''"
+      />
     </figure>
-    <div 
-        :class="{
-            'w-7/12': row,
-            'w-full': !row,
-        }"
+    <div
+      :class="{
+        'w-7/12': row,
+        'w-full': !row,
+      }"
     >
       <div class="flex flex-row justify-between mb-3">
         <CardDate :date="date" />
@@ -34,7 +38,12 @@
           </time>
         </div>
       </div>
-      <StyledButton :text="btnText" :rounded="true" :class="'w-full ' + btnClass" />
+      <StyledButton
+        :text="btnText"
+        :rounded="true"
+        :link="link"
+        :class="'w-full' + btnClass"
+      />
     </div>
   </article>
 </template>
@@ -84,6 +93,11 @@ export default {
       type: Boolean,
       required: false,
       default: true,
+    },
+    link: {
+      type: String,
+      required: false,
+      default: '#',
     },
   },
   computed: {

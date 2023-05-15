@@ -1,5 +1,14 @@
 <template>
-  <button 
+  <a 
+    v-if="link === '#'"
+    class="bg-sun-500 text-minsk-500 px-4 py-2"
+    :class="btnClass + (rounded ? ' rounded-md' : '')"
+    :href="link"
+  >
+    {{ text }}
+  </a>
+  <button
+    v-else
     class="bg-sun-500 text-minsk-500 px-4 py-2"
     :class="btnClass + (rounded ? ' rounded-md' : '')"
   >
@@ -26,6 +35,20 @@ export default {
             required: false,
             default: ""
         },
+        link: {
+            type: String,
+            required: false,
+            default: "#"
+        }
     }
 }
 </script>
+
+<style scoped>
+  a {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+  }
+
+</style>
